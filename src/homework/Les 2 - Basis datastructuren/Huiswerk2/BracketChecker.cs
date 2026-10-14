@@ -18,7 +18,26 @@ namespace AD
         /// Returns False otherwise.</returns>
         public static bool CheckBrackets(string s)
         {
-            throw new System.NotImplementedException();
+            MyStack<char> stack = new MyStack<char>();
+            foreach (char c in s)
+            {
+                if (c == '(')
+                {
+                    stack.Push(c);
+                }
+                else if (c == ')')
+                {
+                    if (stack.IsEmpty())
+                    {
+                        return false;
+                    }
+                    else
+                    {
+                        stack.Pop();
+                    }
+                }
+            }
+            return stack.IsEmpty();
         }
 
 
@@ -37,7 +56,34 @@ namespace AD
         /// Returns False otherwise.</returns>
         public static bool CheckBrackets2(string s)
         {
-            throw new System.NotImplementedException();
+            MyStack<char> stack = new MyStack<char>();
+            foreach (char c in s)
+            {
+                if (c == '(' || c == '{' || c == '[')
+                {
+                    // Push the corresponding closing bracket onto the stack
+                    char closingBracket = c switch
+                    {
+                        '(' => ')',
+                        '{' => '}',
+                        '[' => ']',
+                        _ => throw new BracketCheckerInvalidInputException()
+                    };
+                    stack.Push(closingBracket);
+                }
+                else if (c == ')' || c == '}' || c == ']')
+                {
+                    if (stack.IsEmpty() || stack.Top() != c)
+                    {
+                        return false;
+                    }
+                    else
+                    {
+                        stack.Pop();
+                    }
+                }
+            }
+            return stack.IsEmpty();
         }
 
     }

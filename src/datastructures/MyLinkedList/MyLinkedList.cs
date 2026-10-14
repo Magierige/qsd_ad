@@ -1,4 +1,6 @@
-﻿namespace AD
+﻿using System.Data.Common;
+
+namespace AD
 {
     public partial class MyLinkedList<T> : IMyLinkedList<T>
     {
@@ -7,50 +9,99 @@
 
         public MyLinkedList()
         {
-            // Write implementation here
-            throw new System.NotImplementedException();
+            first = null;
+            size = 0;
         }
 
         public void AddFirst(T data)
         {
-            // Write implementation here
-            throw new System.NotImplementedException();
+            MyLinkedListNode<T> temp = new MyLinkedListNode<T>{data = data, next = first};
+            first = temp;
+            size++;
         }
 
         public T GetFirst()
         {
-            // Write implementation here
-            throw new System.NotImplementedException();
+            if (first == null)
+            {
+                throw new MyLinkedListEmptyException();
+            }
+            return first.data;
         }
 
         public void RemoveFirst()
         {
-            // Write implementation here
-            throw new System.NotImplementedException();
+            if (first == null)
+            {
+                throw new MyLinkedListEmptyException();
+            }
+            else if (size == 1)
+            {
+                first = null;
+            }
+            else
+            {
+                first = first.next;
+            }
+            size--;
         }
 
         public int Size()
         {
-            // Write implementation here
-            throw new System.NotImplementedException();
+            return size;
         }
 
         public void Clear()
         {
-            // Write implementation here
-            throw new System.NotImplementedException();
+            first = null;
+            size = 0;
         }
 
         public void Insert(int index, T data)
         {
-            // Write implementation here
-            throw new System.NotImplementedException();
+            if (index < 0 || index > size)
+            {
+                throw new MyLinkedListIndexOutOfRangeException();
+            }
+            else
+            {
+                if (index == 0)
+                {
+                    AddFirst(data);
+                }
+                else
+                {
+                    MyLinkedListNode<T> current = first;
+                    for (int i = 0; i < index - 1; i++)
+                    {
+                        current = current.next;
+                    }
+                    MyLinkedListNode<T> newNode = new MyLinkedListNode<T> { data = data, next = current.next };
+                    current.next = newNode;
+                    size++;
+                }
+            }
         }
 
         public override string ToString()
         {
-            // Write implementation here
-            throw new System.NotImplementedException();
+            if (size == 0)
+            {
+                return "NIL";
+            }
+            string result = "[";
+            MyLinkedListNode<T> data = first;
+            for (int i = 0; i < size; i++)
+            {
+                result += data.data;
+                if (i < size - 1)
+                {
+                    result += ",";
+                }
+                data = data.next;
+            }
+            result += "]";
+            return result;
         }
     }
 }
