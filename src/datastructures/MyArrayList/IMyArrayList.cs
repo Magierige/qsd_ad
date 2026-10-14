@@ -21,8 +21,6 @@
         // Clears the list
         void Clear();
 
-        string ToString();
-
         // Count the number of occurences in the list of a number
         int CountOccurences(int n);
     }

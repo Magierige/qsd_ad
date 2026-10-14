@@ -69,7 +69,7 @@
             size = 0;
         }
 
-        public string ToString()
+        public override string ToString()
         {
             if (size == 0)
             {
