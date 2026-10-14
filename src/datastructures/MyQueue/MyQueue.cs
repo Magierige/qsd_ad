@@ -5,30 +5,73 @@ namespace AD
         private MyQueueNode<T> front;
         private MyQueueNode<T> back;
         private int size = 0;
-        
+
+        public MyQueue()
+        {
+            front = null;
+            back = null;
+            size = 0;
+        }
+
         public bool IsEmpty()
         {
-            throw new System.NotImplementedException();
+            return size == 0;
         }
 
         public void Enqueue(T data)
         {
-            throw new System.NotImplementedException();
+            if (data == null)
+            {
+                throw new System.ArgumentNullException();
+            }
+            MyQueueNode<T> newNode = new MyQueueNode<T> { data = data, next = null };
+            if (IsEmpty())
+            {
+                front = newNode;
+                back = newNode;
+            }
+            else
+            {
+                back.next = newNode;
+                back = newNode;
+            }
+            size++;
         }
 
         public T GetFront()
         {
-            throw new System.NotImplementedException();
+            if (IsEmpty())
+            {
+                throw new MyQueueEmptyException();
+            }
+            return front.data;
         }
 
         public T Dequeue()
         {
-            throw new System.NotImplementedException();
+            if (IsEmpty())
+            {
+                throw new MyQueueEmptyException();
+            }
+            if (size == 1)
+            {
+                T data = front.data;
+                front = null;
+                back = null;
+                size--;
+                return data;
+            }
+            T result = front.data;
+            front = front.next;
+            size--;
+            return result;
         }
 
         public void Clear()
         {
-            throw new System.NotImplementedException();
+            front = null;
+            back = null;
+            size = 0;
         }
 
     }
