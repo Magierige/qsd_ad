@@ -1,0 +1,35 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+    <IsPackable>false</IsPackable>
+    <IsTestProject>true</IsTestProject>
+    <RootNamespace>AD</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\..\..\algorithms\sorters\SorterBuilder.cs" Link="SorterBuilder.cs" />
+    <Compile Include="..\..\..\algorithms\sorters\SorterTests.cs" Link="SorterTests.cs" />
+    <Compile Include="..\..\..\datastructures\BinaryTree\BinaryTreeBuilder.cs" Link="BinaryTreeBuilder.cs" />
+    <Compile Include="..\..\..\datastructures\BinaryTree\BinaryTreeTests.cs" Link="BinaryTreeTests.cs" />
+    <Compile Include="..\..\..\datastructures\FirstChildNextSibling\FirstChildNextSiblingBuilder.cs" Link="FirstChildNextSiblingBuilder.cs" />
+    <Compile Include="..\..\..\datastructures\FirstChildNextSibling\FirstChildNextSiblingTests.cs" Link="FirstChildNextSiblingTests.cs" />
+    <Compile Include="..\..\..\utils\TestUtils.cs" Link="TestUtils.cs" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="coverlet.collector" Version="6.0.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
+    <PackageReference Include="NUnit" Version="3.14.0" />
+    <PackageReference Include="NUnit.Analyzers" Version="3.9.0" />
+    <PackageReference Include="NUnit3TestAdapter" Version="4.5.0" />
+
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Huiswerk4\Huiswerk4.csproj" />
+  </ItemGroup>
+
+</Project>
