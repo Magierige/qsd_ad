@@ -24,7 +24,19 @@ namespace AD
         //       4
         public static IBinaryTree<int> CreateBinaryTreeInt()
         {
-            throw new System.NotImplementedException();
+            BinaryTree<int> tq = new BinaryTree<int>(8);
+            BinaryTree<int> tg = new BinaryTree<int>();
+            BinaryTree<int> to = new BinaryTree<int>();
+            BinaryTree<int> tp = new BinaryTree<int>(4);
+            BinaryTree<int> tw = new BinaryTree<int>();
+            BinaryTree<int> tt = new BinaryTree<int>();
+            BinaryTree<int> ta = new BinaryTree<int>(6);
+
+            to.Merge(1, null, tp);
+            tg.Merge(7, to, null);
+            tw.Merge(2, tq, tg);
+            tt.Merge(5, tw, ta);
+            return tt;
         }
 
         //
