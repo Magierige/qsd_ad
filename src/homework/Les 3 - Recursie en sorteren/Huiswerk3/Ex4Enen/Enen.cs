@@ -4,7 +4,21 @@
     {
         public static int Enen(int n)
         {
-            throw new System.NotImplementedException();
+            if (n < 0)
+            {
+                //here must come a exeption but the exception is not defined yet
+                //throw new EnenNegativeValueException();
+            }
+            if (n <= 1)
+            {
+                return n;
+            }
+            int count = 1;
+            while (n >= count * 2)
+            {
+                count *= 2;
+            }
+            return 1 + Enen(n - count);
         }
 
         public static void Run()
